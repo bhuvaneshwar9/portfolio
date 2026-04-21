@@ -759,12 +759,11 @@
     </div>
     <div class="projects-grid">
 
+      <!-- ── Project 1: Realtime Data Pipeline ── -->
       <div class="project-card fade-up">
-        <!-- Preview: Streaming pipeline diagram -->
         <div class="project-preview">
           <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="400" height="178" fill="#0d0a06"/>
-            <!-- bronze layer -->
             <rect x="18" y="30" width="90" height="118" rx="8" fill="rgba(249,115,22,.08)" stroke="rgba(249,115,22,.4)" stroke-width="1.5"/>
             <text x="63" y="22" fill="#f97316" font-size="9" text-anchor="middle" font-family="monospace">BRONZE</text>
             <rect x="30" y="44" width="66" height="12" rx="3" fill="rgba(249,115,22,.25)"/>
@@ -772,123 +771,111 @@
             <rect x="30" y="80" width="66" height="12" rx="3" fill="rgba(249,115,22,.15)"/>
             <rect x="30" y="98" width="66" height="12" rx="3" fill="rgba(249,115,22,.12)"/>
             <text x="63" y="52" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">raw_events</text>
-            <text x="63" y="70" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">kafka_stream</text>
+            <text x="63" y="70" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">coingecko_feed</text>
             <text x="63" y="88" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">schema_check</text>
-            <text x="63" y="106" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">dedup_filter</text>
-            <!-- arrow 1 -->
+            <text x="63" y="106" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">100 coins</text>
             <path d="M108 89 L148 89" stroke="#f97316" stroke-width="2" stroke-dasharray="5 3"/>
             <polygon points="148,85 156,89 148,93" fill="#f97316"/>
-            <!-- silver layer -->
             <rect x="156" y="30" width="90" height="118" rx="8" fill="rgba(56,189,248,.07)" stroke="rgba(56,189,248,.35)" stroke-width="1.5"/>
             <text x="201" y="22" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">SILVER</text>
             <rect x="168" y="44" width="66" height="12" rx="3" fill="rgba(56,189,248,.2)"/>
             <rect x="168" y="62" width="66" height="12" rx="3" fill="rgba(56,189,248,.17)"/>
             <rect x="168" y="80" width="66" height="12" rx="3" fill="rgba(56,189,248,.14)"/>
             <rect x="168" y="98" width="66" height="12" rx="3" fill="rgba(56,189,248,.11)"/>
-            <text x="201" y="52" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">pyspark_clean</text>
+            <text x="201" y="52" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">clean_nulls</text>
             <text x="201" y="70" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">z_score_flag</text>
-            <text x="201" y="88" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">enrich_meta</text>
-            <text x="201" y="106" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">delta_write</text>
-            <!-- arrow 2 -->
+            <text x="201" y="88" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">anomaly_detect</text>
+            <text x="201" y="106" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">vol_spike_check</text>
             <path d="M246 89 L286 89" stroke="#34d399" stroke-width="2" stroke-dasharray="5 3"/>
             <polygon points="286,85 294,89 286,93" fill="#34d399"/>
-            <!-- gold layer -->
             <rect x="294" y="30" width="90" height="118" rx="8" fill="rgba(52,211,153,.07)" stroke="rgba(52,211,153,.35)" stroke-width="1.5"/>
             <text x="339" y="22" fill="#34d399" font-size="9" text-anchor="middle" font-family="monospace">GOLD</text>
             <rect x="306" y="44" width="66" height="12" rx="3" fill="rgba(52,211,153,.2)"/>
             <rect x="306" y="62" width="66" height="12" rx="3" fill="rgba(52,211,153,.17)"/>
             <rect x="306" y="80" width="66" height="12" rx="3" fill="rgba(52,211,153,.14)"/>
             <rect x="306" y="98" width="66" height="12" rx="3" fill="rgba(52,211,153,.11)"/>
-            <text x="339" y="52" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">agg_metrics</text>
-            <text x="339" y="70" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">analytics_tbl</text>
-            <text x="339" y="88" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">s3_parquet</text>
-            <text x="339" y="106" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">glue_catalog</text>
-            <!-- bottom label -->
-            <text x="200" y="162" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">Kafka → PySpark → Delta Lake → S3 | Terraform infra</text>
+            <text x="339" y="52" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">by_market_tier</text>
+            <text x="339" y="70" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">top_gainers</text>
+            <text x="339" y="88" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">top_losers</text>
+            <text x="339" y="106" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">market_cap_agg</text>
+            <text x="200" y="162" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">CoinGecko API → pandas → Bronze/Silver/Gold → FastAPI</text>
           </svg>
         </div>
         <div class="project-body">
           <div class="project-emoji">⚡</div>
           <div class="project-title">Realtime Data Pipeline</div>
-          <div class="project-desc">End-to-end streaming pipeline ingesting Kafka events through a Bronze → Silver → Gold medallion architecture. PySpark Structured Streaming writes to Delta Lake; AWS Glue handles batch ETL to S3. Full infrastructure provisioned with Terraform.</div>
+          <div class="project-desc">Live cryptocurrency market data from CoinGecko processed through a Bronze → Silver → Gold medallion architecture. Silver layer flags price anomalies and volume spikes using Z-score detection. Gold layer aggregates by market cap tier with top gainers/losers.</div>
           <div class="project-tags">
-            <span class="tag">Kafka</span><span class="tag">PySpark</span><span class="tag">Delta Lake</span>
-            <span class="tag g">AWS Glue</span><span class="tag g">S3</span><span class="tag g">Terraform</span>
+            <span class="tag">CoinGecko API</span><span class="tag">Pandas</span><span class="tag">FastAPI</span>
+            <span class="tag g">Medallion Architecture</span><span class="tag g">Anomaly Detection</span>
           </div>
           <div class="project-btns">
             <a href="https://github.com/bhuvaneshwar9/realtime-data-pipeline" target="_blank" class="btn-github">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
               GitHub
             </a>
+            <a href="https://realtime-data-pipeline.onrender.com" target="_blank" class="btn-live">⚡ Live Demo</a>
           </div>
         </div>
       </div>
 
+      <!-- ── Project 2: Data Quality Platform ── -->
       <div class="project-card fade-up">
-        <!-- Preview: Data quality check dashboard -->
         <div class="project-preview">
           <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="400" height="178" fill="#0d0a06"/>
-            <!-- header bar -->
             <rect x="14" y="14" width="372" height="28" rx="5" fill="rgba(249,115,22,.1)" stroke="rgba(249,115,22,.3)" stroke-width="1"/>
             <text x="26" y="32" fill="#f97316" font-size="9" font-family="monospace" font-weight="bold">DATA QUALITY MONITOR</text>
             <circle cx="360" cy="28" r="5" fill="#34d399"/>
             <text x="348" y="32" fill="#34d399" font-size="7" font-family="monospace">LIVE</text>
-            <!-- check rows -->
-            <!-- null rate -->
             <rect x="14" y="50" width="372" height="20" rx="4" fill="rgba(52,211,153,.06)"/>
             <circle cx="28" cy="60" r="5" fill="#34d399"/>
-            <text x="40" y="64" fill="#e2e8f0" font-size="8" font-family="monospace">null_rate_check</text>
+            <text x="40" y="64" fill="#e2e8f0" font-size="8" font-family="monospace">null_check</text>
             <rect x="170" y="53" width="120" height="8" rx="4" fill="rgba(52,211,153,.15)"/>
             <rect x="170" y="53" width="24" height="8" rx="4" fill="#34d399"/>
             <text x="300" y="62" fill="#34d399" font-size="8" font-family="monospace">PASS  2.1%</text>
-            <!-- duplicates -->
             <rect x="14" y="76" width="372" height="20" rx="4" fill="rgba(52,211,153,.06)"/>
             <circle cx="28" cy="86" r="5" fill="#34d399"/>
             <text x="40" y="90" fill="#e2e8f0" font-size="8" font-family="monospace">duplicate_check</text>
             <rect x="170" y="79" width="120" height="8" rx="4" fill="rgba(52,211,153,.15)"/>
             <rect x="170" y="79" width="10" height="8" rx="4" fill="#34d399"/>
             <text x="300" y="88" fill="#34d399" font-size="8" font-family="monospace">PASS  0.8%</text>
-            <!-- range -->
             <rect x="14" y="102" width="372" height="20" rx="4" fill="rgba(251,191,36,.06)"/>
             <circle cx="28" cy="112" r="5" fill="#fbbf24"/>
-            <text x="40" y="116" fill="#e2e8f0" font-size="8" font-family="monospace">range_violation</text>
+            <text x="40" y="116" fill="#e2e8f0" font-size="8" font-family="monospace">range_check</text>
             <rect x="170" y="105" width="120" height="8" rx="4" fill="rgba(251,191,36,.15)"/>
             <rect x="170" y="105" width="50" height="8" rx="4" fill="#fbbf24"/>
             <text x="300" y="114" fill="#fbbf24" font-size="8" font-family="monospace">WARN  4.2%</text>
-            <!-- anomaly -->
             <rect x="14" y="128" width="372" height="20" rx="4" fill="rgba(239,68,68,.06)"/>
             <circle cx="28" cy="138" r="5" fill="#ef4444"/>
-            <text x="40" y="142" fill="#e2e8f0" font-size="8" font-family="monospace">anomaly_detect</text>
+            <text x="40" y="142" fill="#e2e8f0" font-size="8" font-family="monospace">anomaly_check</text>
             <rect x="170" y="131" width="120" height="8" rx="4" fill="rgba(239,68,68,.15)"/>
             <rect x="170" y="131" width="78" height="8" rx="4" fill="#ef4444"/>
             <text x="300" y="140" fill="#ef4444" font-size="8" font-family="monospace">FAIL  6.5%</text>
-            <!-- SNS alert label -->
-            <text x="200" y="165" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">CloudWatch metrics → SNS alert fired | ELK structured logs</text>
+            <text x="200" y="165" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">books.toscrape.com → scrape → 5 quality checks → FastAPI</text>
           </svg>
         </div>
         <div class="project-body">
           <div class="project-emoji">🔍</div>
           <div class="project-title">Data Quality Platform</div>
-          <div class="project-desc">Automated rules engine with five check types — null rate, duplicates, range violations, freshness, and statistical anomalies. Publishes to CloudWatch, triggers SNS alerts for critical failures, ships structured logs to Elasticsearch.</div>
+          <div class="project-desc">Scrapes live product data from books.toscrape.com and runs 5 automated quality checks — null rate, duplicates, range violations, freshness, and statistical anomaly detection. Dashboard auto-refreshes every 60 seconds with real results.</div>
           <div class="project-tags">
-            <span class="tag p">AWS SNS</span><span class="tag p">CloudWatch</span><span class="tag p">Terraform</span>
-            <span class="tag p">PostgreSQL</span><span class="tag p">Elasticsearch</span>
+            <span class="tag">BeautifulSoup</span><span class="tag">Pandas</span><span class="tag">FastAPI</span>
+            <span class="tag p">Web Scraping</span><span class="tag p">Anomaly Detection</span>
           </div>
           <div class="project-btns">
             <a href="https://github.com/bhuvaneshwar9/data-quality-platform" target="_blank" class="btn-github">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
               GitHub
             </a>
-            <a href="https://data-quality-platform-mjhj.onrender.com" target="_blank" class="btn-live">
-              ⚡ Live Demo
-            </a>
+            <a href="https://data-quality-platform-1.onrender.com" target="_blank" class="btn-live">⚡ Live Demo</a>
           </div>
         </div>
       </div>
 
-      <!--ORVION_REMOVED-->
       <div class="project-card fade-up" style="display:none">
+        <!-- ORVION removed -->
+
         <!-- Preview: Readiness score gauge + API endpoints -->
         <div class="project-preview">
           <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
