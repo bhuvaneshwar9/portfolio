@@ -1,16 +1,1197 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-    <title>Bhuvaneshwar — Data Engineer</title>
-    <meta name="description" content="Data Engineer specializing in real-time pipelines, data quality, and backend systems." />
-    <script type="module" crossorigin src="/portfolio/assets/index-5nXRSXRd.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-t6SHlMaP.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bhuvaneswar Reddy — Data Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & VARS ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0a06;
+      --bg2:      #130f08;
+      --card:     rgba(30, 20, 8, 0.78);
+      --purple:   #f97316;
+      --purple2:  #ea580c;
+      --teal:     #38bdf8;
+      --green:    #34d399;
+      --text:     #e2e8f0;
+      --muted:    #94a3b8;
+      --border:   rgba(249, 115, 22, 0.18);
+      --radius:   14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: #1a1006; }
+    ::-webkit-scrollbar-thumb { background: rgba(249,115,22,.85); border-radius: 12px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+
+    /* ─── PRELOADER ─────────────────────────────────────── */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity .6s ease;
+    }
+    #preloader.hide { opacity: 0; pointer-events: none; }
+    .loader-ring {
+      width: 60px; height: 60px;
+      border: 4px solid rgba(249,115,22,.2);
+      border-top-color: var(--purple);
+      border-radius: 50%;
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── PARTICLES ─────────────────────────────────────── */
+    #particles-js {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 6%;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(20,14,6,.92);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+    }
+    .nav-brand {
+      font-size: 1.4rem; font-weight: 800; letter-spacing: -.5px;
+      color: var(--purple);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text); text-decoration: none;
+      font-size: .95rem; font-weight: 500;
+      position: relative; padding-bottom: 4px;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--purple); border-radius: 8px;
+      transition: width .3s ease;
+    }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-toggle span {
+      display: block; width: 26px; height: 3px;
+      background: var(--purple); border-radius: 4px;
+      transition: .3s;
+    }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 68px; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: rgba(19,10,35,.97);
+        padding: 1rem 0; border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .75rem 6%; font-size: 1.05rem; }
+    }
+
+    /* ─── SECTIONS ──────────────────────────────────────── */
+    section { position: relative; z-index: 1; padding: 100px 6%; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--purple);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--purple); }
+    .section-desc { color: var(--muted); font-size: 1rem; max-width: 580px; }
+
+    /* ─── HERO ──────────────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 0;
+      background: linear-gradient(to bottom left, rgba(17,16,16,.58), rgba(12,8,24,.9));
+    }
+    .hero-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 3rem;
+    }
+    .hero-greeting {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700; margin-bottom: .5rem;
+    }
+    .wave {
+      display: inline-block;
+      transform-origin: 70% 70%;
+      animation: wave-anim 2.1s ease-in-out infinite;
+    }
+    @keyframes wave-anim {
+      0%,60%,100% { transform: rotate(0deg); }
+      10%,30%      { transform: rotate(14deg); }
+      20%          { transform: rotate(-8deg); }
+      40%          { transform: rotate(-4deg); }
+      50%          { transform: rotate(10deg); }
+    }
+    .hero-name {
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 800; margin-bottom: 1.5rem;
+    }
+    .hero-name .highlight { color: var(--purple); }
+    .typewriter-wrapper {
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 600; color: var(--purple);
+      min-height: 2.4em;
+      padding: .3rem 0 2rem;
+    }
+    .cursor {
+      display: inline-block;
+      width: 3px; height: 1.2em;
+      background: var(--purple);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink .75s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-social { display: flex; gap: 1rem; margin-top: .5rem; }
+    .social-circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.97);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; text-decoration: none;
+      position: relative; transition: .4s; color: #333;
+    }
+    .social-circle::before {
+      content: '';
+      position: absolute; inset: 0; border-radius: 50%;
+      background: #7c2d00;
+      transform: scale(.9); z-index: -1; transition: .4s;
+    }
+    .social-circle:hover::before { transform: scale(1.15); box-shadow: 0 0 20px var(--purple); }
+    .social-circle:hover { color: var(--purple2); box-shadow: 0 0 10px var(--purple); }
+
+    .hero-illustration {
+      width: 320px; height: 320px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-illustration svg { width: 100%; height: 100%; }
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-illustration { display: none; }
+    }
+
+    /* ─── INTRODUCE ─────────────────────────────────────── */
+    #introduce {
+      background: linear-gradient(to bottom left, rgba(17,16,16,.58), rgba(12,8,24,.9));
+    }
+    .intro-grid {
+      display: grid; grid-template-columns: 1fr 280px;
+      gap: 4rem; align-items: center;
+    }
+    .intro-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800; margin-bottom: 1.5rem;
+    }
+    .intro-text p {
+      color: var(--muted); font-size: 1.05rem; line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .intro-text p b { color: var(--purple); }
+    .intro-text p i b { color: var(--purple); }
+    .intro-hobbies { margin-top: 1.2rem; }
+    .intro-hobbies li {
+      list-style: none; color: var(--muted);
+      font-size: .98rem; padding: .3rem 0;
+    }
+    .intro-hobbies li::before { content: '▶ '; color: var(--purple); font-size: .7rem; }
+    .quote-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      text-align: center;
+    }
+    .quote-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple2), #fbbf24);
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 0 0 30px rgba(249,115,22,.35);
+    }
+    .quote-text {
+      font-style: italic; color: var(--muted);
+      font-size: .95rem; line-height: 1.6;
+    }
+    .quote-author { margin-top: .75rem; color: var(--purple); font-weight: 600; font-size: .9rem; }
+    @media (max-width: 768px) {
+      .intro-grid { grid-template-columns: 1fr; }
+      .quote-card { display: none; }
+    }
+
+    /* ─── FIND ME ───────────────────────────────────────── */
+    .find-me {
+      text-align: center; padding: 60px 6% 80px;
+      position: relative; z-index: 1;
+    }
+    .find-me h2 {
+      font-size: 2rem; font-weight: 800; margin-bottom: .5rem;
+    }
+    .find-me p { color: var(--muted); margin-bottom: 1.5rem; }
+    .find-me .social-row { display: flex; gap: 1rem; justify-content: center; }
+
+    /* ─── TECH STACK ────────────────────────────────────── */
+    #skills { background: var(--bg2); }
+    .tech-grid {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .tech-item {
+      display: flex; flex-direction: column;
+      align-items: center; gap: .5rem;
+      width: 90px; padding: 1rem .5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: default; transition: .3s;
+      font-size: .78rem; color: var(--muted);
+      text-align: center;
+    }
+    .tech-item:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 18px rgba(249,115,22,.35);
+      transform: translateY(-4px);
+      color: var(--text);
+    }
+    .tech-item .icon { font-size: 1.8rem; line-height: 1; }
+
+    /* ─── EXPERIENCE ────────────────────────────────────── */
+    #experience { background: var(--bg); }
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+    .exp-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem 2.2rem;
+      transition: border-color .2s;
+    }
+    .exp-card:hover { border-color: rgba(249,115,22,.5); }
+    .exp-card.current { border-left: 3px solid var(--purple); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .5rem; }
+    .exp-title { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+    .exp-period {
+      font-size: .82rem; font-weight: 600;
+      background: rgba(249,115,22,.18); color: var(--purple);
+      padding: .25rem .75rem; border-radius: 20px;
+    }
+    .exp-company { color: var(--muted); font-size: .9rem; margin: .4rem 0 1rem; }
+    .exp-bullets { padding-left: 1.2rem; }
+    .exp-bullets li { color: var(--muted); font-size: .9rem; margin-bottom: .4rem; }
+    .exp-bullets li strong { color: var(--text); }
+
+    /* ─── ABOUT (Stats) ──────────────────────────────────── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .about-text p { color: var(--muted); font-size: .98rem; margin-bottom: .9rem; line-height: 1.8; }
+    .about-text .open { color: var(--green); font-size: .88rem; margin-top: .25rem; font-weight: 600; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      text-align: center; transition: .2s;
+    }
+    .stat-card:hover { border-color: var(--purple); transform: translateY(-3px); }
+    .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--purple); }
+    .stat-label { font-size: .78rem; color: var(--muted); margin-top: .3rem; }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── PROJECTS ──────────────────────────────────────── */
+    #projects { background: var(--bg); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: .25s;
+    }
+    .project-card:hover { border-color: var(--purple); transform: translateY(-5px); box-shadow: 0 14px 44px rgba(249,115,22,.22); }
+    .project-preview {
+      width: 100%; height: 178px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(20,12,4,.95), rgba(30,18,6,.9));
+    }
+    .project-preview svg { width: 100%; height: 100%; }
+    .project-body { padding: 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .65rem; flex: 1; }
+    .project-emoji { font-size: 1.5rem; }
+    .project-title { font-size: 1.05rem; font-weight: 700; }
+    .project-desc { font-size: .86rem; color: var(--muted); line-height: 1.6; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      font-size: .72rem; font-weight: 600;
+      background: rgba(56,189,248,.15); color: var(--teal);
+      padding: .2rem .55rem; border-radius: 20px;
+    }
+    .tag.p { background: rgba(249,115,22,.15); color: var(--purple); }
+    .tag.g { background: rgba(52,211,153,.15); color: var(--green); }
+    .project-btns { display: flex; gap: .75rem; margin-top: .5rem; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: rgba(249,115,22,.15); color: var(--purple);
+      border: 1px solid rgba(249,115,22,.3);
+      padding: .45rem 1rem; border-radius: 8px;
+      font-size: .82rem; font-weight: 600;
+      text-decoration: none; transition: .2s;
+    }
+    .btn-github:hover { background: rgba(249,115,22,.3); }
+    .btn-live {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--purple); color: #000;
+      border: 1px solid var(--purple);
+      padding: .45rem 1rem; border-radius: 8px;
+      font-size: .82rem; font-weight: 700;
+      text-decoration: none; transition: .2s;
+    }
+    .btn-live:hover { background: var(--purple2); border-color: var(--purple2); }
+
+    /* ─── EDUCATION ─────────────────────────────────────── */
+    #education { background: var(--bg2); }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem 2.4rem;
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      margin-top: 2.5rem;
+    }
+    .edu-icon { font-size: 2.4rem; flex-shrink: 0; }
+    .edu-school { font-size: 1.1rem; font-weight: 700; color: var(--purple); }
+    .edu-degree { font-size: 1rem; font-weight: 600; margin: .3rem 0; }
+    .edu-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .83rem; color: var(--muted); margin: .5rem 0 1rem; }
+    .course-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+    .course-pill {
+      font-size: .75rem; background: rgba(249,115,22,.12);
+      color: var(--purple); border: 1px solid rgba(249,115,22,.25);
+      padding: .2rem .65rem; border-radius: 20px;
+    }
+
+    /* ─── CERTIFICATIONS ─────────────────────────────────── */
+    #certifications { background: var(--bg); }
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem; margin-top: 2.5rem;
+    }
+    .cert-card {
+      background: var(--card); border-radius: var(--radius);
+      padding: 1.6rem; display: flex; flex-direction: column; gap: .6rem;
+      transition: .2s;
+    }
+    .cert-card:hover { transform: translateY(-3px); }
+    .cert-aws   { border-left: 3px solid #FF9900; }
+    .cert-databricks { border-left: 3px solid #FF3621; }
+    .cert-ml    { border-left: 3px solid var(--teal); }
+    .cert-ms    { border-left: 3px solid #0078D4; }
+    .cert-issuer { font-size: .75rem; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .cert-name  { font-size: .95rem; font-weight: 700; }
+    .cert-date  { font-size: .78rem; color: var(--muted); }
+    .cert-badge {
+      display: inline-block; font-size: .7rem; font-weight: 700;
+      background: rgba(52,211,153,.15); color: var(--green);
+      border: 1px solid rgba(52,211,153,.3);
+      padding: .15rem .55rem; border-radius: 20px; margin-top: .2rem;
+    }
+    .cert-verify {
+      display: inline-block; margin-top: .5rem;
+      color: var(--purple); font-size: .8rem; font-weight: 600;
+      text-decoration: none;
+    }
+    .cert-verify:hover { text-decoration: underline; }
+
+    /* ─── CONTACT ─────────────────────────────────────────── */
+    #contact { background: var(--bg2); }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.5rem;
+      max-width: 680px; margin: 2rem auto 0; text-align: center;
+    }
+    .contact-card p { color: var(--muted); margin-bottom: 2rem; font-size: .98rem; }
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(249,115,22,.1); color: var(--text);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: .65rem 1.2rem; text-decoration: none;
+      font-size: .88rem; font-weight: 500; transition: .2s;
+    }
+    .contact-link:hover { background: rgba(249,115,22,.25); border-color: var(--purple); color: var(--purple); }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      text-align: center; padding: 2rem 6%;
+      color: var(--muted); font-size: .82rem;
+      border-top: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    footer span { color: var(--purple); }
+
+    /* ─── FADE-UP ANIMATION ──────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader"><div class="loader-ring"></div></div>
+
+<!-- PARTICLES -->
+<div id="particles-js"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-brand" href="#home">BV.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section id="home">
+  <div class="hero-grid">
+    <div>
+      <h1 class="hero-greeting">
+        Hi There!&nbsp;<span class="wave">👋</span>
+      </h1>
+      <h1 class="hero-name">
+        I'M&nbsp;<span class="highlight">BHUVANESWAR REDDY</span>
+      </h1>
+      <div class="typewriter-wrapper">
+        <span id="typewriter"></span><span class="cursor"></span>
+      </div>
+      <div class="hero-social">
+        <a href="https://github.com/bhuvaneshwar9" target="_blank" class="social-circle" title="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/bhuvaneswarreddyv/" target="_blank" class="social-circle" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.02 8.5H5V24H.02V8.5zm7.5 0H12V11s.7-2.5 3.5-2.5C19 8.5 19 11.5 19 11.5V24h-5V13s0-2-2-2-2 2-2 2v11H7.52V8.5z"/></svg>
+        </a>
+        <a href="mailto:bhuvivangimalla9@gmail.com" class="social-circle" title="Email">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="resume.pdf" download class="social-circle" title="Download Resume">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6C4.9 2 4 2.9 4 4v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zm-7-8H9v2h2v2h2v-2h2v-2h-2v-2h-2v2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Animated SVG illustration -->
+    <div class="hero-illustration">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f97316" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f97316"/>
+            <stop offset="100%" stop-color="#fbbf24"/>
+          </linearGradient>
+        </defs>
+        <!-- glow bg -->
+        <circle cx="200" cy="200" r="180" fill="url(#glow)"/>
+        <!-- outer ring -->
+        <circle cx="200" cy="200" r="160" stroke="rgba(249,115,22,0.2)" stroke-width="1" stroke-dasharray="10 6"/>
+        <!-- database cylinders -->
+        <ellipse cx="200" cy="110" rx="55" ry="18" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="1.5"/>
+        <rect x="145" y="110" width="110" height="50" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
+        <ellipse cx="200" cy="160" rx="55" ry="18" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="1.5"/>
+        <rect x="145" y="160" width="110" height="50" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.5"/>
+        <ellipse cx="200" cy="210" rx="55" ry="18" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.5"/>
+        <!-- arrows -->
+        <path d="M200 230 L200 260" stroke="#34d399" stroke-width="2" stroke-dasharray="4 3"/>
+        <polygon points="200,268 193,256 207,256" fill="#34d399"/>
+        <!-- analytics bars -->
+        <rect x="120" y="270" width="18" height="50" rx="4" fill="rgba(249,115,22,0.5)"/>
+        <rect x="148" y="255" width="18" height="65" rx="4" fill="rgba(249,115,22,0.7)"/>
+        <rect x="176" y="262" width="18" height="58" rx="4" fill="rgba(56,189,248,0.6)"/>
+        <rect x="204" y="248" width="18" height="72" rx="4" fill="url(#grad1)"/>
+        <rect x="232" y="258" width="18" height="62" rx="4" fill="rgba(52,211,153,0.6)"/>
+        <rect x="260" y="272" width="18" height="48" rx="4" fill="rgba(249,115,22,0.4)"/>
+        <!-- orbit dots -->
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="12s" repeatCount="indefinite"/>
+          <circle cx="200" cy="40" r="6" fill="#f97316"/>
+          <circle cx="360" cy="200" r="5" fill="#38bdf8"/>
+          <circle cx="200" cy="360" r="6" fill="#34d399"/>
+          <circle cx="40" cy="200" r="5" fill="#f97316"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTRODUCE MYSELF ──────────────────────────────────── -->
+<section id="introduce">
+  <div class="container">
+    <div class="intro-grid fade-up">
+      <div class="intro-text">
+        <h2>LET ME <span style="color:var(--purple)">INTRODUCE</span> MYSELF</h2>
+        <p>
+          I'm a <b>Data Engineer</b> with an M.S. in Computer Science from
+          <b>Texas Tech University</b> (GPA 3.25). I transform raw, messy data into reliable
+          pipelines that power real business decisions.
+        </p>
+        <p>
+          I'm proficient in
+          <i><b>Python, PySpark, SQL, and Apache Spark</b></i>
+          — and I love building end-to-end data platforms that scale.
+        </p>
+        <p>
+          My core interest is building
+          <i><b>streaming pipelines, medallion architectures,</b></i>
+          and cloud-native data platforms on
+          <b>AWS and GCP</b>.
+        </p>
+        <p>
+          Outside of data, I enjoy exploring
+          <b>AI-powered applications</b> and building backend systems with
+          <i><b>FastAPI</b> and <b>Claude API</b>.</i>
+        </p>
+        <ul class="intro-hobbies">
+          <li>Building data pipelines &amp; cloud infrastructure 🚀</li>
+          <li>Exploring machine learning &amp; AI tools 🤖</li>
+          <li>Competitive programming &amp; system design 💡</li>
+        </ul>
+      </div>
+      <div class="quote-card">
+        <div class="quote-avatar">🧑‍💻</div>
+        <p class="quote-text">"Data is the new oil — I build the refinery."</p>
+        <div class="quote-author">— Bhuvaneswar Reddy</div>
+        <br/>
+        <p style="color:var(--green);font-size:.82rem;font-weight:600;">🟢 Open to Data Engineer roles in US (OPT)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FIND ME ────────────────────────────────────────────── -->
+<div class="find-me fade-up">
+  <h2>FIND ME ON</h2>
+  <p>Feel free to <span style="color:var(--purple)">connect</span> with me</p>
+  <div class="social-row">
+    <a href="https://github.com/bhuvaneshwar9" target="_blank" class="social-circle" title="GitHub">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/bhuvaneswarreddyv/" target="_blank" class="social-circle" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.02 8.5H5V24H.02V8.5zm7.5 0H12V11s.7-2.5 3.5-2.5C19 8.5 19 11.5 19 11.5V24h-5V13s0-2-2-2-2 2-2 2v11H7.52V8.5z"/></svg>
+    </a>
+    <a href="mailto:bhuvivangimalla9@gmail.com" class="social-circle" title="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ─── ABOUT (STATS) ─────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Turning data into<br/><span>actionable insights</span></h2>
+        <p>I'm a Data Engineer with an M.S. in Computer Science from Texas Tech University. I hold AWS and Databricks Data Engineer certifications, with deep expertise in Apache Spark, PySpark, Delta Lake, and building end-to-end ETL/ELT pipelines on AWS and GCP.</p>
+        <p>My background also spans DevOps tooling — Terraform, Kubernetes, Jenkins, and Prometheus — giving me the infrastructure depth to build and operate production-grade data platforms end to end.</p>
+        <p class="open">🟢 Open to Data Engineer roles in the US (OPT)</p>
+      </div>
+      <div class="stat-grid fade-up">
+        <div class="stat-card">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Industry Certifications</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3.25</div>
+          <div class="stat-label">Graduate GPA</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years Hands-On Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">M.S.</div>
+          <div class="stat-label">Computer Science — TTU 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ────────────────────────────────────────── -->
+<section id="experience">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Professional <span>Background</span></h2>
+      <p class="section-desc">Hands-on experience delivering cloud infrastructure and data engineering solutions.</p>
+    </div>
+    <div class="exp-list">
+      <div class="exp-card current fade-up">
+        <div class="exp-header">
+          <div class="exp-title">Cloud Administrator</div>
+          <div class="exp-period">July 2025 – Present</div>
+        </div>
+        <div class="exp-company">Serenity Infotech, Inc. &nbsp;·&nbsp; Atlanta, GA (Remote)</div>
+        <ul class="exp-bullets">
+          <li>Provision and manage cloud infrastructure using <strong>Terraform</strong>, ensuring consistent, repeatable deployments across dev, staging, and production.</li>
+          <li>Maintain and optimize <strong>CI/CD pipelines in Jenkins</strong>; reduced manual deployment time from 2 hours to 15 minutes.</li>
+          <li>Implement Auto-scaling and Load Balancing strategies; achieved <strong>25% reduction</strong> in infrastructure spend.</li>
+          <li>Deploy and manage containerized workloads using <strong>Kubernetes and Docker</strong> across multi-node environments on AWS and GCP.</li>
+          <li>Build observability stacks with <strong>Prometheus, Grafana, ELK Stack, and Splunk</strong>; reduced MTTR by 35%.</li>
+          <li>Administer data pipelines on <strong>AWS (S3, Glue, Lambda, Redshift)</strong> and GCP for analytics workloads.</li>
+          <li>Standardize server configuration using automation tools; reduced configuration drift by <strong>40%</strong>.</li>
+        </ul>
+      </div>
+      <div class="exp-card fade-up">
+        <div class="exp-header">
+          <div class="exp-title">Student Assistant</div>
+          <div class="exp-period">Oct 2023 – May 2025</div>
+        </div>
+        <div class="exp-company">Texas Tech University &nbsp;·&nbsp; Lubbock, TX</div>
+        <ul class="exp-bullets">
+          <li>Resolved hardware and software issues across Windows and macOS; maintained <strong>95% first-contact resolution rate</strong>.</li>
+          <li>Developed <strong>Python and Bash automation scripts</strong> for system monitoring and log parsing; reduced manual reporting by 30%.</li>
+          <li>Assisted with network troubleshooting, account lockouts, and MFA setups for campus connectivity.</li>
+          <li>Maintained knowledge base and technical documentation; reduced repeat incidents by <strong>30%</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TECH STACK ────────────────────────────────────────── -->
+<section id="skills">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Technical Skills</div>
+      <h2 class="section-title">Technologies I <span>Work With</span></h2>
+      <p class="section-desc">A full-stack data engineering skill set from ingestion to serving.</p>
+    </div>
+    <div class="tech-grid fade-up">
+      <div class="tech-item"><span class="icon">🐍</span>Python</div>
+      <div class="tech-item"><span class="icon">🗄️</span>SQL</div>
+      <div class="tech-item"><span class="icon">☕</span>Java</div>
+      <div class="tech-item"><span class="icon">🖥️</span>Bash</div>
+      <div class="tech-item"><span class="icon">⚡</span>PySpark</div>
+      <div class="tech-item"><span class="icon">🔥</span>Spark</div>
+      <div class="tech-item"><span class="icon">📦</span>Delta Lake</div>
+      <div class="tech-item"><span class="icon">📨</span>Kafka</div>
+      <div class="tech-item"><span class="icon">🌊</span>Airflow</div>
+      <div class="tech-item"><span class="icon">🔷</span>dbt</div>
+      <div class="tech-item"><span class="icon">☁️</span>AWS</div>
+      <div class="tech-item"><span class="icon">🌐</span>GCP</div>
+      <div class="tech-item"><span class="icon">🪣</span>S3</div>
+      <div class="tech-item"><span class="icon">🔶</span>Redshift</div>
+      <div class="tech-item"><span class="icon">🔵</span>Databricks</div>
+      <div class="tech-item"><span class="icon">🐘</span>PostgreSQL</div>
+      <div class="tech-item"><span class="icon">🐳</span>Docker</div>
+      <div class="tech-item"><span class="icon">⚙️</span>Kubernetes</div>
+      <div class="tech-item"><span class="icon">🏗️</span>Terraform</div>
+      <div class="tech-item"><span class="icon">🔧</span>Jenkins</div>
+      <div class="tech-item"><span class="icon">📊</span>Grafana</div>
+      <div class="tech-item"><span class="icon">🔭</span>Prometheus</div>
+      <div class="tech-item"><span class="icon">🔍</span>Elasticsearch</div>
+      <div class="tech-item"><span class="icon">🤖</span>scikit-learn</div>
+      <div class="tech-item"><span class="icon">🧪</span>MLflow</div>
+      <div class="tech-item"><span class="icon">🚀</span>FastAPI</div>
+      <div class="tech-item"><span class="icon">🔑</span>IAM / RBAC</div>
+      <div class="tech-item"><span class="icon">🐙</span>Git</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ──────────────────────────────────────────── -->
+<section id="projects">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">My Recent <span>Works</span></h2>
+      <p class="section-desc">Real-world engineering work spanning data pipelines, AI backends, and cloud infrastructure.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- ── Project 1: Realtime Data Pipeline ── -->
+      <div class="project-card fade-up">
+        <div class="project-preview">
+          <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="178" fill="#0d0a06"/>
+            <rect x="18" y="30" width="90" height="118" rx="8" fill="rgba(249,115,22,.08)" stroke="rgba(249,115,22,.4)" stroke-width="1.5"/>
+            <text x="63" y="22" fill="#f97316" font-size="9" text-anchor="middle" font-family="monospace">BRONZE</text>
+            <rect x="30" y="44" width="66" height="12" rx="3" fill="rgba(249,115,22,.25)"/>
+            <rect x="30" y="62" width="66" height="12" rx="3" fill="rgba(249,115,22,.2)"/>
+            <rect x="30" y="80" width="66" height="12" rx="3" fill="rgba(249,115,22,.15)"/>
+            <rect x="30" y="98" width="66" height="12" rx="3" fill="rgba(249,115,22,.12)"/>
+            <text x="63" y="52" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">raw_events</text>
+            <text x="63" y="70" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">coingecko_feed</text>
+            <text x="63" y="88" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">schema_check</text>
+            <text x="63" y="106" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">100 coins</text>
+            <path d="M108 89 L148 89" stroke="#f97316" stroke-width="2" stroke-dasharray="5 3"/>
+            <polygon points="148,85 156,89 148,93" fill="#f97316"/>
+            <rect x="156" y="30" width="90" height="118" rx="8" fill="rgba(56,189,248,.07)" stroke="rgba(56,189,248,.35)" stroke-width="1.5"/>
+            <text x="201" y="22" fill="#38bdf8" font-size="9" text-anchor="middle" font-family="monospace">SILVER</text>
+            <rect x="168" y="44" width="66" height="12" rx="3" fill="rgba(56,189,248,.2)"/>
+            <rect x="168" y="62" width="66" height="12" rx="3" fill="rgba(56,189,248,.17)"/>
+            <rect x="168" y="80" width="66" height="12" rx="3" fill="rgba(56,189,248,.14)"/>
+            <rect x="168" y="98" width="66" height="12" rx="3" fill="rgba(56,189,248,.11)"/>
+            <text x="201" y="52" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">clean_nulls</text>
+            <text x="201" y="70" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">z_score_flag</text>
+            <text x="201" y="88" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">anomaly_detect</text>
+            <text x="201" y="106" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">vol_spike_check</text>
+            <path d="M246 89 L286 89" stroke="#34d399" stroke-width="2" stroke-dasharray="5 3"/>
+            <polygon points="286,85 294,89 286,93" fill="#34d399"/>
+            <rect x="294" y="30" width="90" height="118" rx="8" fill="rgba(52,211,153,.07)" stroke="rgba(52,211,153,.35)" stroke-width="1.5"/>
+            <text x="339" y="22" fill="#34d399" font-size="9" text-anchor="middle" font-family="monospace">GOLD</text>
+            <rect x="306" y="44" width="66" height="12" rx="3" fill="rgba(52,211,153,.2)"/>
+            <rect x="306" y="62" width="66" height="12" rx="3" fill="rgba(52,211,153,.17)"/>
+            <rect x="306" y="80" width="66" height="12" rx="3" fill="rgba(52,211,153,.14)"/>
+            <rect x="306" y="98" width="66" height="12" rx="3" fill="rgba(52,211,153,.11)"/>
+            <text x="339" y="52" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">by_market_tier</text>
+            <text x="339" y="70" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">top_gainers</text>
+            <text x="339" y="88" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">top_losers</text>
+            <text x="339" y="106" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">market_cap_agg</text>
+            <text x="200" y="162" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">CoinGecko API → pandas → Bronze/Silver/Gold → FastAPI</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-emoji">⚡</div>
+          <div class="project-title">Realtime Data Pipeline</div>
+          <div class="project-desc">Live cryptocurrency market data from CoinGecko processed through a Bronze → Silver → Gold medallion architecture. Silver layer flags price anomalies and volume spikes using Z-score detection. Gold layer aggregates by market cap tier with top gainers/losers.</div>
+          <div class="project-tags">
+            <span class="tag">CoinGecko API</span><span class="tag">Pandas</span><span class="tag">FastAPI</span>
+            <span class="tag g">Medallion Architecture</span><span class="tag g">Anomaly Detection</span>
+          </div>
+          <div class="project-btns">
+            <a href="https://github.com/bhuvaneshwar9/realtime-data-pipeline" target="_blank" class="btn-github">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+              GitHub
+            </a>
+            <a href="https://realtime-data-pipeline.onrender.com" target="_blank" class="btn-live">⚡ Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 2: Data Quality Platform ── -->
+      <div class="project-card fade-up">
+        <div class="project-preview">
+          <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="178" fill="#0d0a06"/>
+            <rect x="14" y="14" width="372" height="28" rx="5" fill="rgba(249,115,22,.1)" stroke="rgba(249,115,22,.3)" stroke-width="1"/>
+            <text x="26" y="32" fill="#f97316" font-size="9" font-family="monospace" font-weight="bold">DATA QUALITY MONITOR</text>
+            <circle cx="360" cy="28" r="5" fill="#34d399"/>
+            <text x="348" y="32" fill="#34d399" font-size="7" font-family="monospace">LIVE</text>
+            <rect x="14" y="50" width="372" height="20" rx="4" fill="rgba(52,211,153,.06)"/>
+            <circle cx="28" cy="60" r="5" fill="#34d399"/>
+            <text x="40" y="64" fill="#e2e8f0" font-size="8" font-family="monospace">null_check</text>
+            <rect x="170" y="53" width="120" height="8" rx="4" fill="rgba(52,211,153,.15)"/>
+            <rect x="170" y="53" width="24" height="8" rx="4" fill="#34d399"/>
+            <text x="300" y="62" fill="#34d399" font-size="8" font-family="monospace">PASS  2.1%</text>
+            <rect x="14" y="76" width="372" height="20" rx="4" fill="rgba(52,211,153,.06)"/>
+            <circle cx="28" cy="86" r="5" fill="#34d399"/>
+            <text x="40" y="90" fill="#e2e8f0" font-size="8" font-family="monospace">duplicate_check</text>
+            <rect x="170" y="79" width="120" height="8" rx="4" fill="rgba(52,211,153,.15)"/>
+            <rect x="170" y="79" width="10" height="8" rx="4" fill="#34d399"/>
+            <text x="300" y="88" fill="#34d399" font-size="8" font-family="monospace">PASS  0.8%</text>
+            <rect x="14" y="102" width="372" height="20" rx="4" fill="rgba(251,191,36,.06)"/>
+            <circle cx="28" cy="112" r="5" fill="#fbbf24"/>
+            <text x="40" y="116" fill="#e2e8f0" font-size="8" font-family="monospace">range_check</text>
+            <rect x="170" y="105" width="120" height="8" rx="4" fill="rgba(251,191,36,.15)"/>
+            <rect x="170" y="105" width="50" height="8" rx="4" fill="#fbbf24"/>
+            <text x="300" y="114" fill="#fbbf24" font-size="8" font-family="monospace">WARN  4.2%</text>
+            <rect x="14" y="128" width="372" height="20" rx="4" fill="rgba(239,68,68,.06)"/>
+            <circle cx="28" cy="138" r="5" fill="#ef4444"/>
+            <text x="40" y="142" fill="#e2e8f0" font-size="8" font-family="monospace">anomaly_check</text>
+            <rect x="170" y="131" width="120" height="8" rx="4" fill="rgba(239,68,68,.15)"/>
+            <rect x="170" y="131" width="78" height="8" rx="4" fill="#ef4444"/>
+            <text x="300" y="140" fill="#ef4444" font-size="8" font-family="monospace">FAIL  6.5%</text>
+            <text x="200" y="165" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">books.toscrape.com → scrape → 5 quality checks → FastAPI</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-emoji">🔍</div>
+          <div class="project-title">Data Quality Platform</div>
+          <div class="project-desc">Scrapes live product data from books.toscrape.com and runs 5 automated quality checks — null rate, duplicates, range violations, freshness, and statistical anomaly detection. Dashboard auto-refreshes every 60 seconds with real results.</div>
+          <div class="project-tags">
+            <span class="tag">BeautifulSoup</span><span class="tag">Pandas</span><span class="tag">FastAPI</span>
+            <span class="tag p">Web Scraping</span><span class="tag p">Anomaly Detection</span>
+          </div>
+          <div class="project-btns">
+            <a href="https://github.com/bhuvaneshwar9/data-quality-platform" target="_blank" class="btn-github">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+              GitHub
+            </a>
+            <a href="https://data-quality-platform-1.onrender.com" target="_blank" class="btn-live">⚡ Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="display:none">
+        <!-- ORVION removed -->
+
+        <!-- Preview: Readiness score gauge + API endpoints -->
+        <div class="project-preview">
+          <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="178" fill="#0d0a06"/>
+            <!-- readiness score donut -->
+            <circle cx="100" cy="89" r="58" stroke="rgba(249,115,22,.12)" stroke-width="14"/>
+            <circle cx="100" cy="89" r="58" stroke="#f97316" stroke-width="14"
+              stroke-dasharray="255 365" stroke-dashoffset="91" stroke-linecap="round"/>
+            <text x="100" y="84" fill="#f97316" font-size="20" font-weight="800" text-anchor="middle" font-family="monospace">78</text>
+            <text x="100" y="98" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="monospace">READINESS</text>
+            <!-- score breakdown bars -->
+            <text x="185" y="28" fill="#94a3b8" font-size="8" font-family="monospace">SCORE BREAKDOWN</text>
+            <text x="185" y="46" fill="#e2e8f0" font-size="8" font-family="monospace">Tests       30%</text>
+            <rect x="260" y="38" width="120" height="7" rx="3" fill="rgba(249,115,22,.15)"/>
+            <rect x="260" y="38" width="82" height="7" rx="3" fill="#f97316"/>
+            <text x="185" y="64" fill="#e2e8f0" font-size="8" font-family="monospace">Interviews  30%</text>
+            <rect x="260" y="56" width="120" height="7" rx="3" fill="rgba(56,189,248,.15)"/>
+            <rect x="260" y="56" width="70" height="7" rx="3" fill="#38bdf8"/>
+            <text x="185" y="82" fill="#e2e8f0" font-size="8" font-family="monospace">Projects    20%</text>
+            <rect x="260" y="74" width="120" height="7" rx="3" fill="rgba(52,211,153,.15)"/>
+            <rect x="260" y="74" width="96" height="7" rx="3" fill="#34d399"/>
+            <text x="185" y="100" fill="#e2e8f0" font-size="8" font-family="monospace">Engagement  20%</text>
+            <rect x="260" y="92" width="120" height="7" rx="3" fill="rgba(251,191,36,.15)"/>
+            <rect x="260" y="92" width="60" height="7" rx="3" fill="#fbbf24"/>
+            <!-- XP badges -->
+            <rect x="185" y="115" width="48" height="18" rx="4" fill="rgba(249,115,22,.18)" stroke="rgba(249,115,22,.4)" stroke-width="1"/>
+            <text x="209" y="127" fill="#f97316" font-size="7" text-anchor="middle" font-family="monospace">+100 XP</text>
+            <rect x="239" y="115" width="58" height="18" rx="4" fill="rgba(52,211,153,.18)" stroke="rgba(52,211,153,.4)" stroke-width="1"/>
+            <text x="268" y="127" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">🏆 Badge!</text>
+            <rect x="303" y="115" width="72" height="18" rx="4" fill="rgba(56,189,248,.18)" stroke="rgba(56,189,248,.4)" stroke-width="1"/>
+            <text x="339" y="127" fill="#38bdf8" font-size="7" text-anchor="middle" font-family="monospace">Level 3 🔓</text>
+            <text x="200" y="162" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">FastAPI · SQLAlchemy · JWT · Celery · Claude API</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-emoji">🧠</div>
+          <div class="project-title">ORVION — AI Learning Platform</div>
+          <div class="project-desc">FastAPI backend for an AI-powered developer learning platform. Readiness score engine (Test 30% + Interview 30% + Project 20% + Engagement 20%). Gamified with XP, levels, badges. Claude API generates personalized insights and action plans.</div>
+          <div class="project-tags">
+            <span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">JWT</span>
+            <span class="tag p">Celery</span><span class="tag p">Redis</span><span class="tag p">Claude API</span>
+          </div>
+          <div class="project-btns">
+            <a href="https://github.com/bhuvaneshwar9/orvion-backend" target="_blank" class="btn-github">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="display:none">
+        <!-- Preview: Team analytics chart -->
+        <div class="project-preview">
+          <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="178" fill="#0d0a06"/>
+            <!-- header -->
+            <rect x="14" y="12" width="372" height="22" rx="4" fill="rgba(52,211,153,.07)" stroke="rgba(52,211,153,.25)" stroke-width="1"/>
+            <text x="26" y="26" fill="#34d399" font-size="8" font-family="monospace" font-weight="bold">TEAM INTELLIGENCE PLATFORM  |  Week 2025-W17</text>
+            <rect x="346" y="16" width="32" height="14" rx="3" fill="rgba(52,211,153,.2)"/>
+            <text x="362" y="26" fill="#34d399" font-size="7" text-anchor="middle" font-family="monospace">Healthy</text>
+            <!-- developer productivity bars -->
+            <text x="26" y="50" fill="#94a3b8" font-size="7" font-family="monospace">DEVELOPER PRODUCTIVITY INDEX</text>
+            <!-- bars -->
+            <rect x="26" y="54" width="12" height="62" rx="3" fill="rgba(249,115,22,.2)"/>
+            <rect x="26" y="76" width="12" height="40" rx="3" fill="#f97316"/>
+            <rect x="46" y="54" width="12" height="62" rx="3" fill="rgba(249,115,22,.2)"/>
+            <rect x="46" y="60" width="12" height="56" rx="3" fill="#ea580c"/>
+            <rect x="66" y="54" width="12" height="62" rx="3" fill="rgba(249,115,22,.2)"/>
+            <rect x="66" y="69" width="12" height="47" rx="3" fill="#f97316"/>
+            <rect x="86" y="54" width="12" height="62" rx="3" fill="rgba(249,115,22,.2)"/>
+            <rect x="86" y="82" width="12" height="34" rx="3" fill="#fbbf24"/>
+            <rect x="106" y="54" width="12" height="62" rx="3" fill="rgba(249,115,22,.2)"/>
+            <rect x="106" y="64" width="12" height="52" rx="3" fill="#f97316"/>
+            <text x="26" y="126" fill="#94a3b8" font-size="6" font-family="monospace">dev_1</text>
+            <text x="46" y="126" fill="#94a3b8" font-size="6" font-family="monospace">dev_2</text>
+            <text x="66" y="126" fill="#94a3b8" font-size="6" font-family="monospace">dev_3</text>
+            <text x="86" y="126" fill="#94a3b8" font-size="6" font-family="monospace">dev_4</text>
+            <text x="106" y="126" fill="#94a3b8" font-size="6" font-family="monospace">dev_5</text>
+            <!-- burnout risk panel -->
+            <rect x="138" y="42" width="108" height="88" rx="5" fill="rgba(239,68,68,.06)" stroke="rgba(239,68,68,.25)" stroke-width="1"/>
+            <text x="192" y="57" fill="#ef4444" font-size="8" text-anchor="middle" font-family="monospace">BURNOUT RISK</text>
+            <text x="150" y="74" fill="#94a3b8" font-size="7" font-family="monospace">dev_4   ▓▓▓▓▓▓▓▓░░</text>
+            <text x="150" y="74" fill="#ef4444" font-size="7" font-family="monospace" dx="76">HIGH</text>
+            <text x="150" y="90" fill="#94a3b8" font-size="7" font-family="monospace">dev_2   ▓▓▓▓▓░░░░░</text>
+            <text x="150" y="90" fill="#fbbf24" font-size="7" font-family="monospace" dx="76"> MED</text>
+            <text x="150" y="106" fill="#94a3b8" font-size="7" font-family="monospace">dev_1   ▓▓░░░░░░░░</text>
+            <text x="150" y="106" fill="#34d399" font-size="7" font-family="monospace" dx="76"> LOW</text>
+            <!-- sprint velocity -->
+            <rect x="256" y="42" width="128" height="88" rx="5" fill="rgba(56,189,248,.06)" stroke="rgba(56,189,248,.25)" stroke-width="1"/>
+            <text x="320" y="57" fill="#38bdf8" font-size="8" text-anchor="middle" font-family="monospace">SPRINT VELOCITY</text>
+            <text x="268" y="73" fill="#94a3b8" font-size="7" font-family="monospace">S-41  planned:</text>
+            <rect x="350" y="65" width="26" height="7" rx="2" fill="rgba(56,189,248,.3)"/>
+            <rect x="350" y="65" width="22" height="7" rx="2" fill="#38bdf8"/>
+            <text x="268" y="87" fill="#94a3b8" font-size="7" font-family="monospace">S-40  planned:</text>
+            <rect x="350" y="79" width="26" height="7" rx="2" fill="rgba(56,189,248,.3)"/>
+            <rect x="350" y="79" width="26" height="7" rx="2" fill="#38bdf8"/>
+            <text x="268" y="101" fill="#94a3b8" font-size="7" font-family="monospace">S-39  planned:</text>
+            <rect x="350" y="93" width="26" height="7" rx="2" fill="rgba(56,189,248,.3)"/>
+            <rect x="350" y="93" width="18" height="7" rx="2" fill="#38bdf8"/>
+            <text x="200" y="162" fill="rgba(148,163,184,.5)" font-size="8" text-anchor="middle" font-family="monospace">Airflow · dbt · scikit-learn · MLflow · FastAPI · AWS Terraform</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-emoji">📊</div>
+          <div class="project-title">TIP — Team Intelligence Platform</div>
+          <div class="project-desc">Engineering analytics SaaS for managers. GitHub + Jira connectors, Airflow DAGs, S3 data lake, dbt marts. Scikit-learn models predict productivity scores and burnout risk tracked with MLflow. FastAPI analytics API on AWS (ECS + RDS via Terraform).</div>
+          <div class="project-tags">
+            <span class="tag g">Airflow</span><span class="tag g">dbt</span><span class="tag g">scikit-learn</span>
+            <span class="tag g">MLflow</span><span class="tag g">FastAPI</span><span class="tag g">Terraform</span>
+          </div>
+          <div class="project-btns">
+            <a href="https://github.com/bhuvaneshwar9/tip-platform" target="_blank" class="btn-github">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── EDUCATION ─────────────────────────────────────────── -->
+<section id="education">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Education</div>
+      <h2 class="section-title">Academic <span>Background</span></h2>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-school">Texas Tech University &nbsp;·&nbsp; Lubbock, TX</div>
+        <div class="edu-degree">Master of Science — Computer Science</div>
+        <div class="edu-meta">
+          <span>Graduated May 2025</span>
+          <span>GPA: 3.25 / 4.0</span>
+          <span>37 Credit Hours</span>
+        </div>
+        <div class="course-pills">
+          <span class="course-pill">Machine Learning</span>
+          <span class="course-pill">Neural Networks</span>
+          <span class="course-pill">Intelligent Systems</span>
+          <span class="course-pill">Parallel Processing</span>
+          <span class="course-pill">Analysis of Algorithms</span>
+          <span class="course-pill">Quantum Computing</span>
+          <span class="course-pill">Computer Security</span>
+          <span class="course-pill">Software Architecture</span>
+          <span class="course-pill">Advanced OS</span>
+          <span class="course-pill">Cloud Computing</span>
+          <span class="course-pill">Distributed Systems</span>
+          <span class="course-pill">Theory of Automata</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─────────────────────────────────────── -->
+<section id="certifications">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Certifications</div>
+      <h2 class="section-title">Industry <span>Credentials</span></h2>
+      <p class="section-desc">Validated expertise across cloud data engineering, big data, machine learning, and identity management.</p>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card cert-aws fade-up">
+        <div class="cert-issuer">Amazon Web Services</div>
+        <div class="cert-name">AWS Certified Data Engineer — Associate</div>
+        <div class="cert-date">Issued April 3, 2026 · Expires April 3, 2029</div>
+        <div class="cert-badge">Verified</div>
+        <a href="https://www.credly.com/earner/earned/badge/ceec0a79-e8b4-4edb-a824-8de4347449b8" target="_blank" class="cert-verify">↗ View Credential</a>
+      </div>
+      <div class="cert-card cert-databricks fade-up">
+        <div class="cert-issuer">Databricks</div>
+        <div class="cert-name">Databricks Certified Data Engineer Associate</div>
+        <div class="cert-date">Issued April 14, 2026 · Expires April 14, 2028</div>
+        <div class="cert-badge">Verified</div>
+        <a href="https://credentials.databricks.com/cd38cc55-f2c3-4a45-a8ba-e0bc1e1732b6" target="_blank" class="cert-verify">↗ View Credential</a>
+      </div>
+      <div class="cert-card cert-databricks fade-up">
+        <div class="cert-issuer">Databricks Academy</div>
+        <div class="cert-name">Databricks Platform Architect Accreditation</div>
+        <div class="cert-date">Completed April 2026</div>
+        <div class="cert-badge">Verified</div>
+      </div>
+      <div class="cert-card cert-databricks fade-up">
+        <div class="cert-issuer">Databricks Academy</div>
+        <div class="cert-name">Databricks Fundamentals Accreditation</div>
+        <div class="cert-date">Completed April 13, 2026</div>
+        <div class="cert-badge">Verified</div>
+        <a href="https://credentials.databricks.com/a3ccd910-db79-4ead-b952-3e9853b9b7db" target="_blank" class="cert-verify">↗ View Credential</a>
+      </div>
+      <div class="cert-card cert-ml fade-up">
+        <div class="cert-issuer">Coursera · DeepLearning.AI · Stanford</div>
+        <div class="cert-name">Machine Learning Specialization</div>
+        <div class="cert-date">Completed April 13, 2026 · Instructor: Andrew Ng</div>
+        <div class="cert-badge">Verified</div>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/G6FB1MIEAQGT" target="_blank" class="cert-verify">↗ View Credential</a>
+      </div>
+      <div class="cert-card cert-ms fade-up">
+        <div class="cert-issuer">Microsoft</div>
+        <div class="cert-name">Applied Skills: Identities &amp; Access with Microsoft Entra</div>
+        <div class="cert-date">Earned October 1, 2025</div>
+        <div class="cert-badge">Verified</div>
+        <a href="https://learn.microsoft.com/en-us/credentials/applied-skills/get-started-with-identities-and-access-using-microsoft-entra/" target="_blank" class="cert-verify">↗ View Credential</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ──────────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's <span>Connect</span></h2>
+    </div>
+    <div class="contact-card fade-up">
+      <p>I'm open to Data Engineer and Cloud Engineer roles in the US (OPT). Feel free to reach out via email, LinkedIn, or explore my work on GitHub.</p>
+      <div class="contact-links">
+        <a href="mailto:bhuvivangimalla9@gmail.com" class="contact-link">✉ bhuvivangimalla9@gmail.com</a>
+        <a href="tel:+18067021833" class="contact-link">📞 +1 806 702 1833</a>
+        <a href="https://www.linkedin.com/in/bhuvaneswarreddyv/" target="_blank" class="contact-link">💼 LinkedIn</a>
+        <a href="https://github.com/bhuvaneshwar9" target="_blank" class="contact-link">🐙 GitHub</a>
+        <a href="resume.pdf" download class="contact-link">📄 Download Resume</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed &amp; Developed by <span>Bhuvaneswar Reddy Vangimalla</span> · Data Engineer &amp; Cloud Administrator</p>
+</footer>
+
+<!-- ─── SCRIPTS ─────────────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+/* ── Preloader ── */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('preloader').classList.add('hide'), 600);
+});
+
+/* ── Particles ── */
+particlesJS('particles-js', {
+  particles: {
+    number: { value: 80, density: { enable: true, value_area: 900 } },
+    color: { value: '#f97316' },
+    shape: { type: 'circle' },
+    opacity: { value: 0.35, random: true },
+    size: { value: 3, random: true },
+    line_linked: { enable: true, distance: 130, color: '#f97316', opacity: 0.18, width: 1 },
+    move: { enable: true, speed: 1.8, direction: 'none', random: true, out_mode: 'out' }
+  },
+  interactivity: {
+    detect_on: 'canvas',
+    events: {
+      onhover: { enable: true, mode: 'grab' },
+      onclick: { enable: true, mode: 'push' }
+    },
+    modes: {
+      grab: { distance: 140, line_linked: { opacity: 0.5 } },
+      push: { particles_nb: 3 }
+    }
+  },
+  retina_detect: true
+});
+
+/* ── Navbar scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+/* ── Mobile nav toggle ── */
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+
+/* ── Typewriter ── */
+const roles = [
+  'Data Engineer',
+  'PySpark Developer',
+  'Cloud Infrastructure Engineer',
+  'ETL / ELT Specialist',
+  'Databricks & AWS Expert',
+  'FastAPI Backend Developer',
+];
+let ri = 0, ci = 0, deleting = false;
+const el = document.getElementById('typewriter');
+function type() {
+  const cur = roles[ri];
+  if (!deleting) {
+    el.textContent = cur.slice(0, ++ci);
+    if (ci === cur.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = cur.slice(0, --ci);
+    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+  }
+  setTimeout(type, deleting ? 50 : 95);
+}
+type();
+
+/* ── Fade-up on scroll ── */
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
 </html>
