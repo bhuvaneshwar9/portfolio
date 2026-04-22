@@ -11,16 +11,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #0d0a06;
-      --bg2:      #130f08;
-      --card:     rgba(30, 20, 8, 0.78);
-      --purple:   #f97316;
-      --purple2:  #ea580c;
-      --teal:     #38bdf8;
+      --bg:       #08090f;
+      --bg2:      #0d0e1c;
+      --card:     rgba(13, 14, 30, 0.88);
+      --purple:   #818cf8;
+      --purple2:  #6366f1;
+      --teal:     #22d3ee;
       --green:    #34d399;
       --text:     #e2e8f0;
-      --muted:    #94a3b8;
-      --border:   rgba(249, 115, 22, 0.18);
+      --muted:    #8892a4;
+      --border:   rgba(129, 140, 248, 0.14);
       --radius:   14px;
     }
 
@@ -35,8 +35,8 @@
 
     /* ─── SCROLLBAR ─────────────────────────────────────── */
     ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: #1a1006; }
-    ::-webkit-scrollbar-thumb { background: rgba(249,115,22,.85); border-radius: 12px; }
+    ::-webkit-scrollbar-track { background: #111120; }
+    ::-webkit-scrollbar-thumb { background: rgba(129,140,248,.7); border-radius: 12px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
 
     /* ─── PRELOADER ─────────────────────────────────────── */
@@ -49,7 +49,7 @@
     #preloader.hide { opacity: 0; pointer-events: none; }
     .loader-ring {
       width: 60px; height: 60px;
-      border: 4px solid rgba(249,115,22,.2);
+      border: 4px solid rgba(129,140,248,.15);
       border-top-color: var(--purple);
       border-radius: 50%;
       animation: spin .9s linear infinite;
@@ -71,9 +71,9 @@
       transition: all .3s ease;
     }
     nav.scrolled {
-      background: rgba(20,14,6,.92);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      background: rgba(8,9,20,.92);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.5), 0 1px 0 rgba(129,140,248,.1);
     }
     .nav-brand {
       font-size: 1.4rem; font-weight: 800; letter-spacing: -.5px;
@@ -107,7 +107,7 @@
       .nav-links {
         display: none; position: absolute; top: 68px; left: 0; right: 0;
         flex-direction: column; gap: 0;
-        background: rgba(19,10,35,.97);
+        background: rgba(8,9,20,.97);
         padding: 1rem 0; border-bottom: 1px solid var(--border);
       }
       .nav-links.open { display: flex; }
@@ -163,7 +163,12 @@
       font-size: clamp(2.2rem, 4.5vw, 3.2rem);
       font-weight: 800; margin-bottom: 1.5rem;
     }
-    .hero-name .highlight { color: var(--purple); }
+    .hero-name .highlight {
+      background: linear-gradient(135deg, #818cf8, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .typewriter-wrapper {
       font-size: clamp(1.2rem, 2.5vw, 1.8rem);
       font-weight: 600; color: var(--purple);
@@ -191,7 +196,7 @@
     .social-circle::before {
       content: '';
       position: absolute; inset: 0; border-radius: 50%;
-      background: #7c2d00;
+      background: #1e1b5e;
       transform: scale(.9); z-index: -1; transition: .4s;
     }
     .social-circle:hover::before { transform: scale(1.15); box-shadow: 0 0 20px var(--purple); }
@@ -239,11 +244,11 @@
     }
     .quote-avatar {
       width: 100px; height: 100px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple2), #fbbf24);
+      background: linear-gradient(135deg, var(--purple2), #22d3ee);
       margin: 0 auto 1.2rem;
       display: flex; align-items: center; justify-content: center;
       font-size: 2.5rem;
-      box-shadow: 0 0 30px rgba(249,115,22,.35);
+      box-shadow: 0 0 30px rgba(129,140,248,.3);
     }
     .quote-text {
       font-style: italic; color: var(--muted);
@@ -285,7 +290,7 @@
     }
     .tech-item:hover {
       border-color: var(--purple);
-      box-shadow: 0 0 18px rgba(249,115,22,.35);
+      box-shadow: 0 0 18px rgba(129,140,248,.25);
       transform: translateY(-4px);
       color: var(--text);
     }
@@ -299,13 +304,13 @@
       border-radius: var(--radius); padding: 2rem 2.2rem;
       transition: border-color .2s;
     }
-    .exp-card:hover { border-color: rgba(249,115,22,.5); }
+    .exp-card:hover { border-color: rgba(129,140,248,.45); }
     .exp-card.current { border-left: 3px solid var(--purple); }
     .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .5rem; }
     .exp-title { font-size: 1.15rem; font-weight: 700; color: var(--text); }
     .exp-period {
       font-size: .82rem; font-weight: 600;
-      background: rgba(249,115,22,.18); color: var(--purple);
+      background: rgba(129,140,248,.12); color: var(--purple);
       padding: .25rem .75rem; border-radius: 20px;
     }
     .exp-company { color: var(--muted); font-size: .9rem; margin: .4rem 0 1rem; }
@@ -346,12 +351,12 @@
       display: flex; flex-direction: column;
       transition: .25s;
     }
-    .project-card:hover { border-color: var(--purple); transform: translateY(-5px); box-shadow: 0 14px 44px rgba(249,115,22,.22); }
+    .project-card:hover { border-color: var(--purple); transform: translateY(-5px); box-shadow: 0 14px 44px rgba(129,140,248,.18); }
     .project-preview {
       width: 100%; height: 178px; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
       border-bottom: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(20,12,4,.95), rgba(30,18,6,.9));
+      background: linear-gradient(135deg, rgba(8,8,20,.98), rgba(13,13,30,.95));
     }
     .project-preview svg { width: 100%; height: 100%; }
     .project-body { padding: 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .65rem; flex: 1; }
@@ -369,13 +374,13 @@
     .project-btns { display: flex; gap: .75rem; margin-top: .5rem; }
     .btn-github {
       display: inline-flex; align-items: center; gap: .4rem;
-      background: rgba(249,115,22,.15); color: var(--purple);
-      border: 1px solid rgba(249,115,22,.3);
+      background: rgba(129,140,248,.1); color: var(--purple);
+      border: 1px solid rgba(129,140,248,.25);
       padding: .45rem 1rem; border-radius: 8px;
       font-size: .82rem; font-weight: 600;
       text-decoration: none; transition: .2s;
     }
-    .btn-github:hover { background: rgba(249,115,22,.3); }
+    .btn-github:hover { background: rgba(129,140,248,.22); }
     .btn-live {
       display: inline-flex; align-items: center; gap: .4rem;
       background: var(--purple); color: #000;
@@ -400,8 +405,8 @@
     .edu-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .83rem; color: var(--muted); margin: .5rem 0 1rem; }
     .course-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
     .course-pill {
-      font-size: .75rem; background: rgba(249,115,22,.12);
-      color: var(--purple); border: 1px solid rgba(249,115,22,.25);
+      font-size: .75rem; background: rgba(129,140,248,.1);
+      color: var(--purple); border: 1px solid rgba(129,140,248,.22);
       padding: .2rem .65rem; border-radius: 20px;
     }
 
@@ -448,12 +453,12 @@
     .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
     .contact-link {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(249,115,22,.1); color: var(--text);
+      background: rgba(129,140,248,.07); color: var(--text);
       border: 1px solid var(--border); border-radius: 10px;
       padding: .65rem 1.2rem; text-decoration: none;
       font-size: .88rem; font-weight: 500; transition: .2s;
     }
-    .contact-link:hover { background: rgba(249,115,22,.25); border-color: var(--purple); color: var(--purple); }
+    .contact-link:hover { background: rgba(129,140,248,.18); border-color: var(--purple); color: var(--purple); }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
     footer {
@@ -531,41 +536,41 @@
       <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#f97316" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#818cf8" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
           </radialGradient>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f97316"/>
-            <stop offset="100%" stop-color="#fbbf24"/>
+            <stop offset="0%" stop-color="#818cf8"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
           </linearGradient>
         </defs>
         <!-- glow bg -->
         <circle cx="200" cy="200" r="180" fill="url(#glow)"/>
         <!-- outer ring -->
-        <circle cx="200" cy="200" r="160" stroke="rgba(249,115,22,0.2)" stroke-width="1" stroke-dasharray="10 6"/>
+        <circle cx="200" cy="200" r="160" stroke="rgba(129,140,248,0.18)" stroke-width="1" stroke-dasharray="10 6"/>
         <!-- database cylinders -->
-        <ellipse cx="200" cy="110" rx="55" ry="18" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="1.5"/>
-        <rect x="145" y="110" width="110" height="50" fill="rgba(249,115,22,0.1)" stroke="#f97316" stroke-width="1.5"/>
-        <ellipse cx="200" cy="160" rx="55" ry="18" fill="rgba(249,115,22,0.18)" stroke="#f97316" stroke-width="1.5"/>
-        <rect x="145" y="160" width="110" height="50" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.5"/>
-        <ellipse cx="200" cy="210" rx="55" ry="18" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="1.5"/>
+        <ellipse cx="200" cy="110" rx="55" ry="18" fill="rgba(129,140,248,0.15)" stroke="#818cf8" stroke-width="1.5"/>
+        <rect x="145" y="110" width="110" height="50" fill="rgba(129,140,248,0.08)" stroke="#818cf8" stroke-width="1.5"/>
+        <ellipse cx="200" cy="160" rx="55" ry="18" fill="rgba(129,140,248,0.15)" stroke="#818cf8" stroke-width="1.5"/>
+        <rect x="145" y="160" width="110" height="50" fill="rgba(34,211,238,0.07)" stroke="#22d3ee" stroke-width="1.5"/>
+        <ellipse cx="200" cy="210" rx="55" ry="18" fill="rgba(34,211,238,0.13)" stroke="#22d3ee" stroke-width="1.5"/>
         <!-- arrows -->
         <path d="M200 230 L200 260" stroke="#34d399" stroke-width="2" stroke-dasharray="4 3"/>
         <polygon points="200,268 193,256 207,256" fill="#34d399"/>
         <!-- analytics bars -->
-        <rect x="120" y="270" width="18" height="50" rx="4" fill="rgba(249,115,22,0.5)"/>
-        <rect x="148" y="255" width="18" height="65" rx="4" fill="rgba(249,115,22,0.7)"/>
-        <rect x="176" y="262" width="18" height="58" rx="4" fill="rgba(56,189,248,0.6)"/>
+        <rect x="120" y="270" width="18" height="50" rx="4" fill="rgba(129,140,248,0.45)"/>
+        <rect x="148" y="255" width="18" height="65" rx="4" fill="rgba(129,140,248,0.65)"/>
+        <rect x="176" y="262" width="18" height="58" rx="4" fill="rgba(34,211,238,0.55)"/>
         <rect x="204" y="248" width="18" height="72" rx="4" fill="url(#grad1)"/>
-        <rect x="232" y="258" width="18" height="62" rx="4" fill="rgba(52,211,153,0.6)"/>
-        <rect x="260" y="272" width="18" height="48" rx="4" fill="rgba(249,115,22,0.4)"/>
+        <rect x="232" y="258" width="18" height="62" rx="4" fill="rgba(52,211,153,0.55)"/>
+        <rect x="260" y="272" width="18" height="48" rx="4" fill="rgba(129,140,248,0.35)"/>
         <!-- orbit dots -->
         <g>
           <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="12s" repeatCount="indefinite"/>
-          <circle cx="200" cy="40" r="6" fill="#f97316"/>
-          <circle cx="360" cy="200" r="5" fill="#38bdf8"/>
+          <circle cx="200" cy="40" r="6" fill="#818cf8"/>
+          <circle cx="360" cy="200" r="5" fill="#22d3ee"/>
           <circle cx="200" cy="360" r="6" fill="#34d399"/>
-          <circle cx="40" cy="200" r="5" fill="#f97316"/>
+          <circle cx="40" cy="200" r="5" fill="#818cf8"/>
         </g>
       </svg>
     </div>
@@ -597,7 +602,8 @@
         <p>
           Outside of data, I enjoy exploring
           <b>AI-powered applications</b> and building backend systems with
-          <i><b>FastAPI</b> and <b>Claude API</b>.</i>
+          <i><b>FastAPI</b></i>. Currently deepening my Spark expertise through a
+          <b>real-world Formula 1 project on Azure Databricks</b>.
         </p>
         <ul class="intro-hobbies">
           <li>Building data pipelines &amp; cloud infrastructure 🚀</li>
@@ -1127,12 +1133,12 @@ window.addEventListener('load', () => {
 particlesJS('particles-js', {
   particles: {
     number: { value: 80, density: { enable: true, value_area: 900 } },
-    color: { value: '#f97316' },
+    color: { value: '#818cf8' },
     shape: { type: 'circle' },
-    opacity: { value: 0.35, random: true },
-    size: { value: 3, random: true },
-    line_linked: { enable: true, distance: 130, color: '#f97316', opacity: 0.18, width: 1 },
-    move: { enable: true, speed: 1.8, direction: 'none', random: true, out_mode: 'out' }
+    opacity: { value: 0.22, random: true },
+    size: { value: 2.5, random: true },
+    line_linked: { enable: true, distance: 130, color: '#818cf8', opacity: 0.1, width: 1 },
+    move: { enable: true, speed: 1.4, direction: 'none', random: true, out_mode: 'out' }
   },
   interactivity: {
     detect_on: 'canvas',
