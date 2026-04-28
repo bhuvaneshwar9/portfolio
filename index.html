@@ -879,6 +879,80 @@
         </div>
       </div>
 
+      <!-- ── Project 3: Formula 1 Databricks Pipeline ── -->
+      <div class="project-card fade-up">
+        <div class="project-preview">
+          <svg viewBox="0 0 400 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="178" fill="#080608"/>
+            <!-- top bar -->
+            <rect x="0" y="0" width="400" height="28" fill="rgba(232,0,45,.12)" />
+            <rect x="0" y="0" width="400" height="2" fill="#e8002d"/>
+            <text x="16" y="19" fill="#e8002d" font-size="9" font-family="monospace" font-weight="bold" letter-spacing="2">F1 DATA PIPELINE</text>
+            <circle cx="370" cy="14" r="5" fill="#e8002d"/>
+            <text x="344" y="18" fill="#e8002d" font-size="7" font-family="monospace">LIVE</text>
+            <!-- driver standings mini table -->
+            <text x="16" y="46" fill="rgba(240,240,240,.45)" font-size="7" font-family="monospace" letter-spacing="1">DRIVER STANDINGS · 2024</text>
+            <!-- row 1 VER -->
+            <rect x="16" y="52" width="175" height="16" rx="3" fill="rgba(232,0,45,.08)"/>
+            <text x="24" y="63" fill="#ffd700" font-size="8" font-family="monospace">🥇</text>
+            <text x="40" y="63" fill="#f0f0f0" font-size="8" font-family="monospace">VER  Max Verstappen</text>
+            <text x="162" y="63" fill="#e8002d" font-size="8" font-family="monospace" font-weight="bold">393</text>
+            <!-- row 2 NOR -->
+            <rect x="16" y="71" width="175" height="16" rx="3" fill="rgba(255,255,255,.03)"/>
+            <text x="24" y="82" fill="#c0c0c0" font-size="8" font-family="monospace">🥈</text>
+            <text x="40" y="82" fill="#c8c8c8" font-size="8" font-family="monospace">NOR  Lando Norris</text>
+            <text x="162" y="82" fill="#e8002d" font-size="8" font-family="monospace">331</text>
+            <!-- row 3 LEC -->
+            <rect x="16" y="90" width="175" height="16" rx="3" fill="rgba(255,255,255,.03)"/>
+            <text x="24" y="101" fill="#cd7f32" font-size="8" font-family="monospace">🥉</text>
+            <text x="40" y="101" fill="#c8c8c8" font-size="8" font-family="monospace">LEC  Charles Leclerc</text>
+            <text x="162" y="101" fill="#e8002d" font-size="8" font-family="monospace">307</text>
+            <!-- row 4 -->
+            <rect x="16" y="109" width="175" height="14" rx="3" fill="rgba(255,255,255,.02)"/>
+            <text x="24" y="119" fill="#888" font-size="7" font-family="monospace">P4  Piastri · McLaren</text>
+            <text x="162" y="119" fill="#888" font-size="7" font-family="monospace">262</text>
+            <!-- row 5 -->
+            <rect x="16" y="126" width="175" height="14" rx="3" fill="rgba(255,255,255,.02)"/>
+            <text x="24" y="136" fill="#888" font-size="7" font-family="monospace">P5  Sainz · Ferrari</text>
+            <text x="162" y="136" fill="#888" font-size="7" font-family="monospace">244</text>
+            <!-- fastest lap card -->
+            <rect x="205" y="36" width="180" height="66" rx="5" fill="rgba(0,216,75,.06)" stroke="rgba(0,216,75,.3)" stroke-width="1"/>
+            <text x="295" y="52" fill="#00d84b" font-size="8" text-anchor="middle" font-family="monospace" letter-spacing="1">⚡ FASTEST LAP</text>
+            <text x="295" y="67" fill="#f0f0f0" font-size="10" text-anchor="middle" font-family="monospace" font-weight="bold">Charles Leclerc</text>
+            <text x="295" y="80" fill="#00d84b" font-size="11" text-anchor="middle" font-family="monospace" font-weight="bold">1:14.693</text>
+            <text x="295" y="93" fill="#666" font-size="7" text-anchor="middle" font-family="monospace">Circuit de Monaco</text>
+            <!-- constructor standings mini -->
+            <rect x="205" y="112" width="180" height="46" rx="5" fill="rgba(255,215,0,.05)" stroke="rgba(255,215,0,.2)" stroke-width="1"/>
+            <text x="295" y="126" fill="#ffd700" font-size="7" text-anchor="middle" font-family="monospace" letter-spacing="1">CONSTRUCTORS</text>
+            <text x="215" y="139" fill="#c8c8c8" font-size="7" font-family="monospace">McLaren</text>
+            <rect x="263" y="132" width="55" height="5" rx="2" fill="rgba(255,215,0,.15)"/>
+            <rect x="263" y="132" width="55" height="5" rx="2" fill="#ffd700"/>
+            <text x="323" y="138" fill="#ffd700" font-size="7" font-family="monospace">593</text>
+            <text x="215" y="152" fill="#c8c8c8" font-size="7" font-family="monospace">Ferrari</text>
+            <rect x="263" y="145" width="55" height="5" rx="2" fill="rgba(255,215,0,.15)"/>
+            <rect x="263" y="145" width="51" height="5" rx="2" fill="rgba(255,180,0,.7)"/>
+            <text x="323" y="151" fill="#ffd700" font-size="7" font-family="monospace">551</text>
+            <text x="200" y="168" fill="rgba(148,163,184,.4)" font-size="8" text-anchor="middle" font-family="monospace">Ergast API → PySpark → Medallion → FastAPI Dashboard</text>
+          </svg>
+        </div>
+        <div class="project-body">
+          <div class="project-emoji">🏎️</div>
+          <div class="project-title">Formula 1 Databricks Pipeline</div>
+          <div class="project-desc">Live F1 championship data processed through a PySpark medallion architecture on Databricks. Ingests circuits, races, drivers, and results through Bronze → Silver → Gold layers with Delta Lake. FastAPI dashboard shows live driver standings, constructor standings, last race results, and dominant driver analysis.</div>
+          <div class="project-tags">
+            <span class="tag">PySpark</span><span class="tag">Databricks</span><span class="tag">Delta Lake</span>
+            <span class="tag p">Ergast API</span><span class="tag p">FastAPI</span><span class="tag g">Medallion Architecture</span>
+          </div>
+          <div class="project-btns">
+            <a href="https://github.com/bhuvaneshwar9/formula1-databricks" target="_blank" class="btn-github">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+              GitHub
+            </a>
+            <a href="https://formula1-databricks.onrender.com" target="_blank" class="btn-live">🏎️ Live Demo</a>
+          </div>
+        </div>
+      </div>
+
       <div class="project-card fade-up" style="display:none">
         <!-- ORVION removed -->
 
